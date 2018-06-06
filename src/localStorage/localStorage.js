@@ -2,7 +2,7 @@ angular.module('ngIdle.localStorage', [])
   .service('IdleStorageAccessor', ['$window', function($window) {
     return {
       get: function() {
-        return $window.localStorage;
+        return (self.chrome && self.chrome.storage && self.chrome.storage.local) || $window.localStorage;
       }
     }
   }])
